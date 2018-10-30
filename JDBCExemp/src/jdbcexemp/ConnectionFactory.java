@@ -7,8 +7,8 @@ package jdbcexemp;
 
 /**
  *
- * @author aluno
+ * @author junior
  */
-class DriveManager {
+class ConnectionFactory {
     
 }
