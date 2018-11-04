@@ -1,2 +1,0 @@
-falta select e delete professor
-;) :(
