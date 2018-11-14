@@ -16,6 +16,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.mysql.jdbc.Driver;
+import conexao.Mysql;
+import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -104,7 +108,25 @@ public class SaveContact extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Mysql bd = new Mysql();
+        
+        Connection conexao = bd.conecta();
+        
+        try {
+            PreparedStatement instrucao = conexao.prepareStatement(
+                    "insert into contatos(nome, email, endereco) values (?, ?, ?"
+            );
+           
+            /*
+            instrucao.setString(1, "Leonam");
+            instrucao.setString(2, "mayane@leonam.com.br");
+            instrucao.setString(3, "rua mayane");
+            */
+            //processRequest(request, response);
+        } catch (SQLException ex) {
+            System.out.println("Erro na operação!");
+            throw new RuntimeException(ex.getMessage());
+        }
     }
 
     /**
